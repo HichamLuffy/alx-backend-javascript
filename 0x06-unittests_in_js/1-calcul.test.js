@@ -1,5 +1,5 @@
-const assert = require('assert');
-const calculateNumber = require('./1-calcul');
+import assert from 'assert';
+import calculateNumber from './1-calcul.js';
 
 describe('calculateNumber', function () {
   it('should add two numbers', function () {
@@ -17,5 +17,4 @@ describe('calculateNumber', function () {
   it('should return Error when dividing by zero', function () {
     assert.strictEqual(calculateNumber('DIVIDE', 1.4, 0), 'Error');
   });
-
 });
