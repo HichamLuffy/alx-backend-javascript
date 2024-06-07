@@ -1,13 +1,16 @@
 function calculateNumber(type, a, b) {
-  if (type === 'SUM') {
-    return Math.round(a) + Math.round(b);
-  } else if (type === 'SUBTRACT') {
-    return Math.round(a) - Math.round(b);
-  } else if (type === 'DIVIDE') {
-    if (Math.round(b) === 0) {
+  a = Math.round(a);
+  b = Math.round(b);
+
+  switch (type) {
+    case 'SUM':
+      return a + b;
+    case 'SUBTRACT':
+      return a - b;
+    case 'DIVIDE':
+      return b !== 0 ? a / b : 'Error';
+    default:
       return 'Error';
-    }
-    return Math.round(a) / Math.round(b);
   }
 }
 

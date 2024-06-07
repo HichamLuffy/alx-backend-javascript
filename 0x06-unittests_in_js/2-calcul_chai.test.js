@@ -1,16 +1,21 @@
-const Utils = {
-  calculateNumber: function(type, a, b) {
-    if (type === 'SUM') {
-      return Math.round(a) + Math.round(b);
-    } else if (type === 'SUBTRACT') {
-      return Math.round(a) - Math.round(b);
-    } else if (type === 'DIVIDE') {
-      if (Math.round(b) === 0) {
-        return 'Error';
-      }
-      return Math.round(a) / Math.round(b);
-    }
-  }
-};
+const expect = require('chai').expect;
+const calculateNumber = require('./2-calcul_chai');
 
-module.exports = Utils;
+describe('calculateNumber', function () {
+  it('should add two numbers', function () {
+    expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
+  });
+
+  it('should subtract two numbers', function () {
+    expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
+  });
+
+  it('should divide two numbers', function () {
+    expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
+  });
+
+  it('should return Error when dividing by zero', function () {
+    expect(calculateNumber('DIVIDE', 1.4, 0)).to.equal('Error');
+  });
+
+});
