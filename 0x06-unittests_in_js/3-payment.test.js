@@ -1,12 +1,27 @@
 const sinon = require('sinon');
-const sendPaymentRequestToApi = require('./3-payment.js');
-const Utils = require('./utils.js');
+const sendPaymentRequestToApi = require('./3-payment');
+const Utils = require('./utils');
 
-describe('sendPaymentRequestToApi', function () {
-  it('should use Utils.calculateNumber', function () {
-    const spy = sinon.spy(Utils, 'calculateNumber');
-    sendPaymentRequestToApi(100, 20);
-    sinon.assert.calledWith(spy, 'SUM', 100, 20);
+describe('sendPaymentRequestToApi', function() {
+  let spy;
+
+  beforeEach(function() {
+    spy = sinon.spy(console, 'log');
+  });
+
+  afterEach(function() {
     spy.restore();
+  });
+
+  it('should log the correct total for 100 and 20', function() {
+    sendPaymentRequestToApi(100, 20);
+    sinon.assert.calledOnce(spy);
+    sinon.assert.calledWith(spy, 'The total is: 120');
+  });
+
+  it('should log the correct total for 10 and 10', function() {
+    sendPaymentRequestToApi(10, 10);
+    sinon.assert.calledOnce(spy);
+    sinon.assert.calledWith(spy, 'The total is: 20');
   });
 });
