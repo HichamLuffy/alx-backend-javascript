@@ -1,10 +1,12 @@
 const assert = require('assert');
-const calculateNumber = require('./0-calcul');
+const calculateNumber = require('./0-calcul.js');
 
 describe('calculateNumber', () => {
-  it('should correctly round and sum numbers', () => {
-    assert.strictEqual(calculateNumber(1.4, 4.5), 6);
-    assert.strictEqual(calculateNumber(1.5, 3.7), 6);
-    assert.strictEqual(calculateNumber(2.5, 2.5), 6);
+  it('should return -4 when inputs are -1 and -2.7', () => {
+    assert.strictEqual(calculateNumber(-1, -2.7), -4);
+  });
+
+  it('should return -4 when inputs are -1.7 and -2', () => {
+    assert.strictEqual(calculateNumber(-1.7, -2), -4);
   });
 });
